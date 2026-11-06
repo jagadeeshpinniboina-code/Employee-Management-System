@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Employee-List
+{% endblock %}
+
+{% block body %}
+     {% if employee_list %}
+         <h1 class="text-center" style="background-color: greenyellow ; margin-top: 100px" >Employee Data </h1>
+         <table class="table table-striped table-bordered table-hover table-dark ">
+             <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Department</th>
+                    <th>Destination</th>
+                    <th>Salary</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+             </thead>
+             <tbody>
+                  {% for employee in employee_list %}
+                      <tr>
+                          <td><a href="{% url 'employee_detail_view' employee.id %}" class="btn btn-warning">
+                              {{ employee.id }}</a></td>
+                          <td>{{ employee.name }}</td>
+                          <td>{{ employee.email }}</td>
+                          <td>{{ employee.mobile }}</td>
+                          <td>{{ employee.department }}</td>
+                          <td>{{ employee.destination }}</td>
+                          <td>{{ employee.salary }}</td>
+                          <td>{{ employee.city }}</td>
+                          <td>{{ employee.status }}</td>
+                          <td>
+                              <a href="{% url 'employee_update_view' employee.id %}" class="btn btn-success btn-sm">update</a>
+                              <a href="{% url 'employee_delete_view' employee.id %}" class="btn btn-danger btn-sm">delete</a>
+                          </td>
+                      </tr>
+                  {% endfor %}
+             </tbody>
+         </table>
+
+     {% else %}
+         <h1>Employee Data Not Available</h1>
+
+     {% endif %}
+    <h1 class="text-center"><a href="{% url 'create_employee_view' %}" class="btn btn-primary btn-lg">Employee_Create</a></h1>
+{% endblock %}

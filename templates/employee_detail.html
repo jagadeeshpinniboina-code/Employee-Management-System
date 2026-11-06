@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+
+{% block title %}
+    Employee-Detail
+{% endblock %}
+
+{% block body %}
+
+{% if employee %}
+    <div class="container mt-5" id="create_form">
+
+        <div class="card shadow-lg">
+
+            <div class="card-header text-center bg-primary text-white">
+                <h2>Employee Details</h2>
+            </div>
+
+            <div class="card-body">
+
+                <div class="row bg-warning" >
+
+                    <div class="col-md-6 mb-3 ">
+                        <strong>Employee ID</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.id }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Employee Name</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.name }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Email</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.email }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Mobile</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.mobile }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Department</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.department }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Destination</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.destination }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>Salary</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.salary }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <strong>City</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.city }}
+                        </p>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <strong>Status</strong>
+                        <p class="form-control bg-light">
+                            {{ employee.status }}
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-footer text-center bg-success">
+
+                <a href="{% url 'employee_list_view' %}"
+                   class="btn btn-danger btn-lg">
+                    ← Back
+                </a>
+
+                <a href="{% url 'employee_update_view' employee.id %}"
+                   class="btn btn-primary btn-lg">
+                    Update →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% else %}
+
+<div class="alert alert-danger">
+    Employee not found
+</div>
+
+{% endif %}
+
+{% endblock %}
+<!--
+	{% if employee %}
+        <h1>Employee_id:{{ employee.id }}</h1>
+        <h1>Employee_Name:{{ employee.name }}</h1>
+        <h1>Employee_Email:{{ employee.email }}</h1>
+        <h1>Employee_Mobile:{{ employee.mobile }}</h1>
+        <h1>Employee_Department:{{ employee.department }}</h1>
+        <h1>Employee_Destination:{{ employee.destination }}</h1>
+        <h1>Employee_Salary:{{ employee.salary }}</h1>
+        <h1>Employee_City:{{ employee.city }}</h1>
+        <h1>Employee_Status:{{ employee.status }}</h1>
+    {% endif %}
+    <a href="{% url 'employee_list_view' %}" class="btn btn-danger btn-lg">Back</a>
+
+-->

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Employee-Delete
+{% endblock %}
+{% block body %}
+	{% if employee %}
+        <form method="POST" id="create_form">
+            {% csrf_token %}
+            <h2>Are You Sure delete {{ employee.name }} object</h2>
+            <input type="submit" value="Yes I'm Sure" class="btn btn-primary"></input>
+            <a href="{% url 'employee_list_view' %}" class="btn btn-danger">Back</a>
+        </form>
+    {% else %}
+        <h1>Employee id not found</h1>
+    {% endif %}
+{% endblock %}

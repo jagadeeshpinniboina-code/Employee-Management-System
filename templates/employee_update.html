@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_filters %}
+
+{% block title %}
+    Employee-Update
+{% endblock %}
+
+{% block body %}
+	{% if employee %}
+        <form method="POST" id="create_form">
+             {% csrf_token %}
+             <div>
+                 <div class="bg-primary text-center mb-4 text-white">
+                     <h2>Employee-Update Form</h2>
+                 </div>
+                 <div class="row">
+                     <div class="col-md-6">
+                        <label>Employee ID</label>
+                        <input type="text" value="{{ employee.id }}" class="form-control" readonly>
+                     </div>
+                     <div class="col-md-6">{{ form.name|as_crispy_field}}</div>
+                 </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.email|as_crispy_field }}</div>
+                    <div class="col-md-6">{{ form.mobile|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.department|as_crispy_field }}</div>
+                    <div class="col-md-6">{{ form.destination|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">{{ form.salary|as_crispy_field }}</div>
+                    <div class="col-md-6">{{ form.city|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">{{ form.status|as_crispy_field }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"><input type="submit" value="update" class="btn btn-success form-control"></div>
+                    <div class="col-md-6"><a href="{% url 'employee_list_view' %}" class="btn btn-danger form-control">Back</a></div>
+                </div>
+            </div>
+             <!--<table>
+                 <tr>
+                     <th>Id:</th>
+                     <td><input type="number" name="id" value="{{ employee.id }}"></td>
+                 </tr>
+                 <tr>
+                     <th>Name:</th>
+                     <td><input type="text" name="name" value="{{ employee.name }}"></td>
+                 </tr>
+                 <tr>
+                     <th>Email:</th>
+                     <td><input type="email" name="email" value="{{ employee.email }}"></td>
+                 </tr>
+                 <tr>
+                     <th>Mobile:</th>
+                     <td><input type="number" name="mobile" value="{{ employee.mobile }}"></td>
+                 </tr>
+                 <tr>
+                     <th>Department:</th>
+                     <td><input type="text" name="department" value="{{ employee.department }}"></td>
+                 </tr>
+                 <tr>
+                     <th>Destination:</th>
+                     <td><input type="text" name="destination" value="{{ employee.destination }}"></td>
+                 </tr>
+                 <tr>
+                     <th>Salary:</th>
+                     <td><input type="number" name="salary" value="{{ employee.salary }}"></td>
+                 </tr>
+                 <tr>
+                     <th>City:</th>
+                     <td><input type="text" name="city" value="{{ employee.city }}"></td>
+                 </tr>
+                 <tr>
+                     <th>Status:</th>
+                     <td><input type="text" name="status" value="{{ employee.status }}"></td>
+                 </tr>
+                 <tr>
+                     <th></th>
+                     <td><input type="submit" value="update" class="btn btn-primary"></td>
+                 </tr>
+             </table>
+             -->
+        </form>
+
+    {% else %}
+        <h1>Employee not found</h1>
+    {% endif %}
+{% endblock %}
